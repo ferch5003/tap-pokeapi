@@ -1,0 +1,955 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "abilities": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "ability": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": ["null", "string"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": ["name", "url"]
+            },
+            "is_hidden": {
+              "type": ["null", "boolean"]
+            },
+            "slot": {
+              "type": ["null", "integer"]
+            }
+          },
+          "required": ["ability", "is_hidden", "slot"]
+        }
+      ]
+    },
+    "base_experience": {
+      "type": ["null", "integer"]
+    },
+    "forms": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": ["null", "string"]
+            },
+            "url": {
+              "type": ["null", "string"]
+            }
+          },
+          "required": ["name", "url"]
+        }
+      ]
+    },
+    "game_indices": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "game_index": {
+              "type": ["null", "integer"]
+            },
+            "version": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": ["null", "string"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": ["name", "url"]
+            }
+          },
+          "required": ["game_index", "version"]
+        }
+      ]
+    },
+    "height": {
+      "type": ["null", "integer"]
+    },
+    "held_items": {
+      "type": "array",
+      "items": {}
+    },
+    "id": {
+      "type": ["null", "integer"]
+    },
+    "is_default": {
+      "type": ["null", "boolean"]
+    },
+    "location_area_encounters": {
+      "type": ["null", "string"]
+    },
+    "moves": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "move": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": ["null", "string"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": ["name", "url"]
+            },
+            "version_group_details": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "level_learned_at": {
+                      "type": ["null", "integer"]
+                    },
+                    "move_learn_method": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": ["null", "string"]
+                        },
+                        "url": {
+                          "type": ["null", "string"]
+                        }
+                      },
+                      "required": ["name", "url"]
+                    },
+                    "version_group": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": ["null", "string"]
+                        },
+                        "url": {
+                          "type": ["null", "string"]
+                        }
+                      },
+                      "required": ["name", "url"]
+                    }
+                  },
+                  "required": [
+                    "level_learned_at",
+                    "move_learn_method",
+                    "version_group"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "level_learned_at": {
+                      "type": ["null", "integer"]
+                    },
+                    "move_learn_method": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": ["null", "string"]
+                        },
+                        "url": {
+                          "type": ["null", "string"]
+                        }
+                      },
+                      "required": ["name", "url"]
+                    },
+                    "version_group": {
+                      "type": "object",
+                      "properties": {
+                        "name": {
+                          "type": ["null", "string"]
+                        },
+                        "url": {
+                          "type": ["null", "string"]
+                        }
+                      },
+                      "required": ["name", "url"]
+                    }
+                  },
+                  "required": [
+                    "level_learned_at",
+                    "move_learn_method",
+                    "version_group"
+                  ]
+                }
+              ]
+            }
+          },
+          "required": ["move", "version_group_details"]
+        }
+      ]
+    },
+    "name": {
+      "type": ["null", "string"]
+    },
+    "order": {
+      "type": ["null", "integer"]
+    },
+    "past_types": {
+      "type": "array",
+      "items": {}
+    },
+    "species": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": ["null", "string"]
+        },
+        "url": {
+          "type": ["null", "string"]
+        }
+      },
+      "required": ["name", "url"]
+    },
+    "sprites": {
+      "type": "object",
+      "properties": {
+        "back_default": {
+          "type": ["null", "string"]
+        },
+        "back_female": {
+          "type": "null"
+        },
+        "back_shiny": {
+          "type": ["null", "string"]
+        },
+        "back_shiny_female": {
+          "type": "null"
+        },
+        "front_default": {
+          "type": ["null", "string"]
+        },
+        "front_female": {
+          "type": "null"
+        },
+        "front_shiny": {
+          "type": ["null", "string"]
+        },
+        "front_shiny_female": {
+          "type": "null"
+        },
+        "other": {
+          "type": "object",
+          "properties": {
+            "dream_world": {
+              "type": "object",
+              "properties": {
+                "front_default": {
+                  "type": ["null", "string"]
+                },
+                "front_female": {
+                  "type": "null"
+                }
+              },
+              "required": ["front_default", "front_female"]
+            },
+            "home": {
+              "type": "object",
+              "properties": {
+                "front_default": {
+                  "type": ["null", "string"]
+                },
+                "front_female": {
+                  "type": "null"
+                },
+                "front_shiny": {
+                  "type": ["null", "string"]
+                },
+                "front_shiny_female": {
+                  "type": "null"
+                }
+              },
+              "required": [
+                "front_default",
+                "front_female",
+                "front_shiny",
+                "front_shiny_female"
+              ]
+            },
+            "official-artwork": {
+              "type": "object",
+              "properties": {
+                "front_default": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": ["front_default"]
+            }
+          },
+          "required": ["dream_world", "home", "official-artwork"]
+        },
+        "versions": {
+          "type": "object",
+          "properties": {
+            "generation-i": {
+              "type": "object",
+              "properties": {
+                "red-blue": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_gray": {
+                      "type": ["null", "string"]
+                    },
+                    "back_transparent": {
+                      "type": ["null", "string"]
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_gray": {
+                      "type": ["null", "string"]
+                    },
+                    "front_transparent": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_gray",
+                    "back_transparent",
+                    "front_default",
+                    "front_gray",
+                    "front_transparent"
+                  ]
+                },
+                "yellow": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_gray": {
+                      "type": ["null", "string"]
+                    },
+                    "back_transparent": {
+                      "type": ["null", "string"]
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_gray": {
+                      "type": ["null", "string"]
+                    },
+                    "front_transparent": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_gray",
+                    "back_transparent",
+                    "front_default",
+                    "front_gray",
+                    "front_transparent"
+                  ]
+                }
+              },
+              "required": ["red-blue", "yellow"]
+            },
+            "generation-ii": {
+              "type": "object",
+              "properties": {
+                "crystal": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny_transparent": {
+                      "type": ["null", "string"]
+                    },
+                    "back_transparent": {
+                      "type": ["null", "string"]
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny_transparent": {
+                      "type": ["null", "string"]
+                    },
+                    "front_transparent": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_shiny",
+                    "back_shiny_transparent",
+                    "back_transparent",
+                    "front_default",
+                    "front_shiny",
+                    "front_shiny_transparent",
+                    "front_transparent"
+                  ]
+                },
+                "gold": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_transparent": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_shiny",
+                    "front_default",
+                    "front_shiny",
+                    "front_transparent"
+                  ]
+                },
+                "silver": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_transparent": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_shiny",
+                    "front_default",
+                    "front_shiny",
+                    "front_transparent"
+                  ]
+                }
+              },
+              "required": ["crystal", "gold", "silver"]
+            },
+            "generation-iii": {
+              "type": "object",
+              "properties": {
+                "emerald": {
+                  "type": "object",
+                  "properties": {
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "required": ["front_default", "front_shiny"]
+                },
+                "firered-leafgreen": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_shiny",
+                    "front_default",
+                    "front_shiny"
+                  ]
+                },
+                "ruby-sapphire": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_shiny",
+                    "front_default",
+                    "front_shiny"
+                  ]
+                }
+              },
+              "required": ["emerald", "firered-leafgreen", "ruby-sapphire"]
+            },
+            "generation-iv": {
+              "type": "object",
+              "properties": {
+                "diamond-pearl": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_female": {
+                      "type": "null"
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny_female": {
+                      "type": "null"
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_female",
+                    "back_shiny",
+                    "back_shiny_female",
+                    "front_default",
+                    "front_female",
+                    "front_shiny",
+                    "front_shiny_female"
+                  ]
+                },
+                "heartgold-soulsilver": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_female": {
+                      "type": "null"
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny_female": {
+                      "type": "null"
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_female",
+                    "back_shiny",
+                    "back_shiny_female",
+                    "front_default",
+                    "front_female",
+                    "front_shiny",
+                    "front_shiny_female"
+                  ]
+                },
+                "platinum": {
+                  "type": "object",
+                  "properties": {
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_female": {
+                      "type": "null"
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny_female": {
+                      "type": "null"
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "back_default",
+                    "back_female",
+                    "back_shiny",
+                    "back_shiny_female",
+                    "front_default",
+                    "front_female",
+                    "front_shiny",
+                    "front_shiny_female"
+                  ]
+                }
+              },
+              "required": ["diamond-pearl", "heartgold-soulsilver", "platinum"]
+            },
+            "generation-v": {
+              "type": "object",
+              "properties": {
+                "black-white": {
+                  "type": "object",
+                  "properties": {
+                    "animated": {
+                      "type": "object",
+                      "properties": {
+                        "back_default": {
+                          "type": ["null", "string"]
+                        },
+                        "back_female": {
+                          "type": "null"
+                        },
+                        "back_shiny": {
+                          "type": ["null", "string"]
+                        },
+                        "back_shiny_female": {
+                          "type": "null"
+                        },
+                        "front_default": {
+                          "type": ["null", "string"]
+                        },
+                        "front_female": {
+                          "type": "null"
+                        },
+                        "front_shiny": {
+                          "type": ["null", "string"]
+                        },
+                        "front_shiny_female": {
+                          "type": "null"
+                        }
+                      },
+                      "required": [
+                        "back_default",
+                        "back_female",
+                        "back_shiny",
+                        "back_shiny_female",
+                        "front_default",
+                        "front_female",
+                        "front_shiny",
+                        "front_shiny_female"
+                      ]
+                    },
+                    "back_default": {
+                      "type": ["null", "string"]
+                    },
+                    "back_female": {
+                      "type": "null"
+                    },
+                    "back_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "back_shiny_female": {
+                      "type": "null"
+                    },
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "animated",
+                    "back_default",
+                    "back_female",
+                    "back_shiny",
+                    "back_shiny_female",
+                    "front_default",
+                    "front_female",
+                    "front_shiny",
+                    "front_shiny_female"
+                  ]
+                }
+              },
+              "required": ["black-white"]
+            },
+            "generation-vi": {
+              "type": "object",
+              "properties": {
+                "omegaruby-alphasapphire": {
+                  "type": "object",
+                  "properties": {
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "front_default",
+                    "front_female",
+                    "front_shiny",
+                    "front_shiny_female"
+                  ]
+                },
+                "x-y": {
+                  "type": "object",
+                  "properties": {
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "front_default",
+                    "front_female",
+                    "front_shiny",
+                    "front_shiny_female"
+                  ]
+                }
+              },
+              "required": ["omegaruby-alphasapphire", "x-y"]
+            },
+            "generation-vii": {
+              "type": "object",
+              "properties": {
+                "icons": {
+                  "type": "object",
+                  "properties": {
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": ["front_default", "front_female"]
+                },
+                "ultra-sun-ultra-moon": {
+                  "type": "object",
+                  "properties": {
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    },
+                    "front_shiny": {
+                      "type": ["null", "string"]
+                    },
+                    "front_shiny_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": [
+                    "front_default",
+                    "front_female",
+                    "front_shiny",
+                    "front_shiny_female"
+                  ]
+                }
+              },
+              "required": ["icons", "ultra-sun-ultra-moon"]
+            },
+            "generation-viii": {
+              "type": "object",
+              "properties": {
+                "icons": {
+                  "type": "object",
+                  "properties": {
+                    "front_default": {
+                      "type": ["null", "string"]
+                    },
+                    "front_female": {
+                      "type": "null"
+                    }
+                  },
+                  "required": ["front_default", "front_female"]
+                }
+              },
+              "required": ["icons"]
+            }
+          },
+          "required": [
+            "generation-i",
+            "generation-ii",
+            "generation-iii",
+            "generation-iv",
+            "generation-v",
+            "generation-vi",
+            "generation-vii",
+            "generation-viii"
+          ]
+        }
+      },
+      "required": [
+        "back_default",
+        "back_female",
+        "back_shiny",
+        "back_shiny_female",
+        "front_default",
+        "front_female",
+        "front_shiny",
+        "front_shiny_female",
+        "other",
+        "versions"
+      ]
+    },
+    "stats": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "base_stat": {
+              "type": ["null", "integer"]
+            },
+            "effort": {
+              "type": ["null", "integer"]
+            },
+            "stat": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": ["null", "string"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": ["name", "url"]
+            }
+          },
+          "required": ["base_stat", "effort", "stat"]
+        }
+      ]
+    },
+    "types": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "slot": {
+              "type": ["null", "integer"]
+            },
+            "type": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": ["null", "string"]
+                },
+                "url": {
+                  "type": ["null", "string"]
+                }
+              },
+              "required": ["name", "url"]
+            }
+          },
+          "required": ["slot", "type"]
+        }
+      ]
+    },
+    "weight": {
+      "type": ["null", "integer"]
+    }
+  },
+  "required": [
+    "abilities",
+    "base_experience",
+    "forms",
+    "game_indices",
+    "height",
+    "held_items",
+    "id",
+    "is_default",
+    "location_area_encounters",
+    "moves",
+    "name",
+    "order",
+    "past_types",
+    "species",
+    "sprites",
+    "stats",
+    "types",
+    "weight"
+  ]
+}
