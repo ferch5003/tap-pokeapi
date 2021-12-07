@@ -1,0 +1,123 @@
+[
+    {
+        "label": "Catalog",
+        "importPath": "singer.catalog",
+        "description": "singer.catalog",
+        "isExtraImport": true,
+        "detail": "singer.catalog",
+        "documentation": {}
+    },
+    {
+        "label": "CatalogEntry",
+        "importPath": "singer.catalog",
+        "description": "singer.catalog",
+        "isExtraImport": true,
+        "detail": "singer.catalog",
+        "documentation": {}
+    },
+    {
+        "label": "load_schemas",
+        "importPath": "tap_pokeapi.schema",
+        "description": "tap_pokeapi.schema",
+        "isExtraImport": true,
+        "detail": "tap_pokeapi.schema",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "Schema",
+        "importPath": "singer.schema",
+        "description": "singer.schema",
+        "isExtraImport": true,
+        "detail": "singer.schema",
+        "documentation": {}
+    },
+    {
+        "label": "singer",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "singer",
+        "description": "singer",
+        "detail": "singer",
+        "documentation": {}
+    },
+    {
+        "label": "setup",
+        "importPath": "setuptools",
+        "description": "setuptools",
+        "isExtraImport": true,
+        "detail": "setuptools",
+        "documentation": {}
+    },
+    {
+        "label": "discover",
+        "kind": 2,
+        "importPath": "tap_pokeapi.discover",
+        "description": "tap_pokeapi.discover",
+        "peekOfCode": "def discover():\n    raw_schemas = load_schemas()\n    streams = []\n    for stream_id, schema in raw_schemas.items():\n        # TODO: populate any metadata and stream's key properties here..\n        stream_metadata = []\n        key_properties = []\n        streams.append(\n            CatalogEntry(\n                tap_stream_id=stream_id,",
+        "detail": "tap_pokeapi.discover",
+        "documentation": {}
+    },
+    {
+        "label": "get_abs_path",
+        "kind": 2,
+        "importPath": "tap_pokeapi.schema",
+        "description": "tap_pokeapi.schema",
+        "peekOfCode": "def get_abs_path(path):\n    return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)\ndef load_schemas():\n    \"\"\" Load schemas from schemas folder \"\"\"\n    schemas = {}\n    for filename in os.listdir(get_abs_path('schemas')):\n        path = get_abs_path('schemas') + '/' + filename\n        file_raw = filename.replace('.json', '')\n        with open(path) as file:\n            schemas[file_raw] = Schema.from_dict(json.load(file))",
+        "detail": "tap_pokeapi.schema",
+        "documentation": {}
+    },
+    {
+        "label": "load_schemas",
+        "kind": 2,
+        "importPath": "tap_pokeapi.schema",
+        "description": "tap_pokeapi.schema",
+        "peekOfCode": "def load_schemas():\n    \"\"\" Load schemas from schemas folder \"\"\"\n    schemas = {}\n    for filename in os.listdir(get_abs_path('schemas')):\n        path = get_abs_path('schemas') + '/' + filename\n        file_raw = filename.replace('.json', '')\n        with open(path) as file:\n            schemas[file_raw] = Schema.from_dict(json.load(file))\n    return schemas",
+        "detail": "tap_pokeapi.schema",
+        "documentation": {}
+    },
+    {
+        "label": "STREAMS",
+        "kind": 5,
+        "importPath": "tap_pokeapi.schema",
+        "description": "tap_pokeapi.schema",
+        "peekOfCode": "STREAMS = {\n    'pokemons': {\n    }\n}\ndef get_abs_path(path):\n    return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)\ndef load_schemas():\n    \"\"\" Load schemas from schemas folder \"\"\"\n    schemas = {}\n    for filename in os.listdir(get_abs_path('schemas')):",
+        "detail": "tap_pokeapi.schema",
+        "documentation": {}
+    },
+    {
+        "label": "sync",
+        "kind": 2,
+        "importPath": "tap_pokeapi.sync",
+        "description": "tap_pokeapi.sync",
+        "peekOfCode": "def sync(config, state, catalog):\n    \"\"\" Sync data from tap source \"\"\"\n    # Loop over selected streams in catalog\n    for stream in catalog.get_selected_streams(state):\n        LOGGER.info(\"Syncing stream:\" + stream.tap_stream_id)\n        bookmark_column = stream.replication_key\n        is_sorted = True  # TODO: indicate whether data is sorted ascending on bookmark value\n        singer.write_schema(\n            stream_name=stream.tap_stream_id,\n            schema=stream.schema,",
+        "detail": "tap_pokeapi.sync",
+        "documentation": {}
+    },
+    {
+        "label": "LOGGER",
+        "kind": 5,
+        "importPath": "tap_pokeapi.sync",
+        "description": "tap_pokeapi.sync",
+        "peekOfCode": "LOGGER = singer.get_logger()\ndef sync(config, state, catalog):\n    \"\"\" Sync data from tap source \"\"\"\n    # Loop over selected streams in catalog\n    for stream in catalog.get_selected_streams(state):\n        LOGGER.info(\"Syncing stream:\" + stream.tap_stream_id)\n        bookmark_column = stream.replication_key\n        is_sorted = True  # TODO: indicate whether data is sorted ascending on bookmark value\n        singer.write_schema(\n            stream_name=stream.tap_stream_id,",
+        "detail": "tap_pokeapi.sync",
+        "documentation": {}
+    }
+]
