@@ -1,5 +1,48 @@
 [
     {
+        "label": "backoff",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "backoff",
+        "description": "backoff",
+        "detail": "backoff",
+        "documentation": {}
+    },
+    {
+        "label": "requests",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "requests",
+        "description": "requests",
+        "detail": "requests",
+        "documentation": {}
+    },
+    {
+        "label": "ConnectionError",
+        "importPath": "requests.exceptions",
+        "description": "requests.exceptions",
+        "isExtraImport": true,
+        "detail": "requests.exceptions",
+        "documentation": {}
+    },
+    {
+        "label": "singer",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "singer",
+        "description": "singer",
+        "detail": "singer",
+        "documentation": {}
+    },
+    {
+        "label": "metrics",
+        "importPath": "singer",
+        "description": "singer",
+        "isExtraImport": true,
+        "detail": "singer",
+        "documentation": {}
+    },
+    {
         "label": "Catalog",
         "importPath": "singer.catalog",
         "description": "singer.catalog",
@@ -50,15 +93,6 @@
         "documentation": {}
     },
     {
-        "label": "singer",
-        "kind": 6,
-        "isExtraImport": true,
-        "importPath": "singer",
-        "description": "singer",
-        "detail": "singer",
-        "documentation": {}
-    },
-    {
         "label": "setup",
         "importPath": "setuptools",
         "description": "setuptools",
@@ -67,11 +101,65 @@
         "documentation": {}
     },
     {
+        "label": "Server500Error",
+        "kind": 6,
+        "importPath": "tap_pokeapi.client",
+        "description": "tap_pokeapi.client",
+        "peekOfCode": "class Server500Error(Exception):\n    pass\nERROR_CODE_EXCEPTION_MAPPING = {\n    500: Server500Error\n}\ndef get_exception_for_error_code(error_code):\n    return ERROR_CODE_EXCEPTION_MAPPING.get(error_code)\ndef raise_for_error(response):\n    LOGGER.error('ERROR {}: {}, REASON: {}'.format(response.status_code,\n                                                   response.text, response.reason))",
+        "detail": "tap_pokeapi.client",
+        "documentation": {}
+    },
+    {
+        "label": "PokeApiClient",
+        "kind": 6,
+        "importPath": "tap_pokeapi.client",
+        "description": "tap_pokeapi.client",
+        "peekOfCode": "class PokeApiClient:\n    def __init__(\n        self,\n        page_size: int = 10\n    ) -> None:\n        self.base_url = \"https://pokeapi.co/api/v2\"\n        self.page_size = page_size\n    @backoff.on_exception(backoff.expo,\n                          (Server500Error, ConnectionError),\n                          max_tries=7)",
+        "detail": "tap_pokeapi.client",
+        "documentation": {}
+    },
+    {
+        "label": "get_exception_for_error_code",
+        "kind": 2,
+        "importPath": "tap_pokeapi.client",
+        "description": "tap_pokeapi.client",
+        "peekOfCode": "def get_exception_for_error_code(error_code):\n    return ERROR_CODE_EXCEPTION_MAPPING.get(error_code)\ndef raise_for_error(response):\n    LOGGER.error('ERROR {}: {}, REASON: {}'.format(response.status_code,\n                                                   response.text, response.reason))\n    try:\n        response.raise_for_status()\n    except (requests.HTTPError, requests.ConnectionError) as error:\n        try:\n            content_length = len(response.content)",
+        "detail": "tap_pokeapi.client",
+        "documentation": {}
+    },
+    {
+        "label": "raise_for_error",
+        "kind": 2,
+        "importPath": "tap_pokeapi.client",
+        "description": "tap_pokeapi.client",
+        "peekOfCode": "def raise_for_error(response):\n    LOGGER.error('ERROR {}: {}, REASON: {}'.format(response.status_code,\n                                                   response.text, response.reason))\n    try:\n        response.raise_for_status()\n    except (requests.HTTPError, requests.ConnectionError) as error:\n        try:\n            content_length = len(response.content)\n            if content_length == 0:\n                return",
+        "detail": "tap_pokeapi.client",
+        "documentation": {}
+    },
+    {
+        "label": "LOGGER",
+        "kind": 5,
+        "importPath": "tap_pokeapi.client",
+        "description": "tap_pokeapi.client",
+        "peekOfCode": "LOGGER = singer.get_logger()\nclass Server500Error(Exception):\n    pass\nERROR_CODE_EXCEPTION_MAPPING = {\n    500: Server500Error\n}\ndef get_exception_for_error_code(error_code):\n    return ERROR_CODE_EXCEPTION_MAPPING.get(error_code)\ndef raise_for_error(response):\n    LOGGER.error('ERROR {}: {}, REASON: {}'.format(response.status_code,",
+        "detail": "tap_pokeapi.client",
+        "documentation": {}
+    },
+    {
+        "label": "ERROR_CODE_EXCEPTION_MAPPING",
+        "kind": 5,
+        "importPath": "tap_pokeapi.client",
+        "description": "tap_pokeapi.client",
+        "peekOfCode": "ERROR_CODE_EXCEPTION_MAPPING = {\n    500: Server500Error\n}\ndef get_exception_for_error_code(error_code):\n    return ERROR_CODE_EXCEPTION_MAPPING.get(error_code)\ndef raise_for_error(response):\n    LOGGER.error('ERROR {}: {}, REASON: {}'.format(response.status_code,\n                                                   response.text, response.reason))\n    try:\n        response.raise_for_status()",
+        "detail": "tap_pokeapi.client",
+        "documentation": {}
+    },
+    {
         "label": "discover",
         "kind": 2,
         "importPath": "tap_pokeapi.discover",
         "description": "tap_pokeapi.discover",
-        "peekOfCode": "def discover():\n    raw_schemas = load_schemas()\n    streams = []\n    for stream_id, schema in raw_schemas.items():\n        # TODO: populate any metadata and stream's key properties here..\n        stream_metadata = []\n        key_properties = []\n        streams.append(\n            CatalogEntry(\n                tap_stream_id=stream_id,",
+        "peekOfCode": "def discover():\n    raw_schemas = load_schemas()\n    streams = []\n    for stream_id, schema in raw_schemas.items():\n        stream_metadata = []\n        key_properties = []\n        streams.append(\n            CatalogEntry(\n                tap_stream_id=stream_id,\n                stream=stream_id,",
         "detail": "tap_pokeapi.discover",
         "documentation": {}
     },
@@ -103,11 +191,20 @@
         "documentation": {}
     },
     {
+        "label": "sync_pokemons",
+        "kind": 2,
+        "importPath": "tap_pokeapi.sync",
+        "description": "tap_pokeapi.sync",
+        "peekOfCode": "def sync_pokemons(client, pokemon_qty=10):\n    method = 'GET'\n    pokemons = []\n    for pokemon_id in range(1, pokemon_qty + 1):\n        path = f'pokemon/{pokemon_id}'\n        response = client.request(method, path=path)\n        pokemons.append(response)\n    return pokemons\ndef sync(client, config, state, catalog):\n    \"\"\" Sync data from tap source \"\"\"",
+        "detail": "tap_pokeapi.sync",
+        "documentation": {}
+    },
+    {
         "label": "sync",
         "kind": 2,
         "importPath": "tap_pokeapi.sync",
         "description": "tap_pokeapi.sync",
-        "peekOfCode": "def sync(config, state, catalog):\n    \"\"\" Sync data from tap source \"\"\"\n    # Loop over selected streams in catalog\n    for stream in catalog.get_selected_streams(state):\n        LOGGER.info(\"Syncing stream:\" + stream.tap_stream_id)\n        bookmark_column = stream.replication_key\n        is_sorted = True  # TODO: indicate whether data is sorted ascending on bookmark value\n        singer.write_schema(\n            stream_name=stream.tap_stream_id,\n            schema=stream.schema,",
+        "peekOfCode": "def sync(client, config, state, catalog):\n    \"\"\" Sync data from tap source \"\"\"\n    # Loop over selected streams in catalog\n    for stream in catalog.streams:\n        LOGGER.info(\"Syncing stream:\" + stream.tap_stream_id)\n        bookmark_column = stream.replication_key\n        is_sorted = False\n        singer.write_schema(\n            stream_name=stream.tap_stream_id,\n            schema=stream.schema.to_dict(),",
         "detail": "tap_pokeapi.sync",
         "documentation": {}
     },
@@ -116,7 +213,7 @@
         "kind": 5,
         "importPath": "tap_pokeapi.sync",
         "description": "tap_pokeapi.sync",
-        "peekOfCode": "LOGGER = singer.get_logger()\ndef sync(config, state, catalog):\n    \"\"\" Sync data from tap source \"\"\"\n    # Loop over selected streams in catalog\n    for stream in catalog.get_selected_streams(state):\n        LOGGER.info(\"Syncing stream:\" + stream.tap_stream_id)\n        bookmark_column = stream.replication_key\n        is_sorted = True  # TODO: indicate whether data is sorted ascending on bookmark value\n        singer.write_schema(\n            stream_name=stream.tap_stream_id,",
+        "peekOfCode": "LOGGER = singer.get_logger()\ndef sync_pokemons(client, pokemon_qty=10):\n    method = 'GET'\n    pokemons = []\n    for pokemon_id in range(1, pokemon_qty + 1):\n        path = f'pokemon/{pokemon_id}'\n        response = client.request(method, path=path)\n        pokemons.append(response)\n    return pokemons\ndef sync(client, config, state, catalog):",
         "detail": "tap_pokeapi.sync",
         "documentation": {}
     }

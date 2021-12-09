@@ -1,29 +1,40 @@
+import requests
 import singer
 
 LOGGER = singer.get_logger()
 
-def sync(config, state, catalog):
+
+def sync_pokemons(client, pokemon_qty=10):
+    method = 'GET'
+
+    pokemons = []
+
+    for pokemon_id in range(1, pokemon_qty + 1):
+        path = f'pokemon/{pokemon_id}'
+        response = client.request(method, path=path)
+
+        pokemons.append(response)
+
+    return pokemons
+
+
+def sync(client, config, state, catalog):
     """ Sync data from tap source """
     # Loop over selected streams in catalog
-    for stream in catalog.get_selected_streams(state):
+    for stream in catalog.streams:
         LOGGER.info("Syncing stream:" + stream.tap_stream_id)
 
         bookmark_column = stream.replication_key
-        is_sorted = True  # TODO: indicate whether data is sorted ascending on bookmark value
+        is_sorted = False
 
         singer.write_schema(
             stream_name=stream.tap_stream_id,
-            schema=stream.schema,
+            schema=stream.schema.to_dict(),
             key_properties=stream.key_properties,
         )
 
-        # TODO: delete and replace this inline function with your own data retrieval process:
-        def tap_data(): return [{"id": x, "name": "row${x}"}
-                                for x in range(1000)]
-
         max_bookmark = None
-        for row in tap_data():
-            # TODO: place type conversions or transformations here
+        for row in sync_pokemons(client, pokemon_qty=10):
 
             # write one or more rows to the stream:
             singer.write_records(stream.tap_stream_id, [row])
