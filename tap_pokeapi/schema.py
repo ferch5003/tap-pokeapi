@@ -4,10 +4,6 @@ from singer.schema import Schema
 
 # Reference:
 # https://github.com/singer-io/getting-started/blob/master/docs/DISCOVERY_MODE.md#Metadata
-STREAMS = {
-    'pokemons': {
-    }
-}
 
 
 def get_abs_path(path):

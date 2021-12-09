@@ -159,7 +159,16 @@
         "kind": 2,
         "importPath": "tap_pokeapi.discover",
         "description": "tap_pokeapi.discover",
-        "peekOfCode": "def discover():\n    raw_schemas = load_schemas()\n    streams = []\n    for stream_id, schema in raw_schemas.items():\n        stream_metadata = []\n        key_properties = []\n        streams.append(\n            CatalogEntry(\n                tap_stream_id=stream_id,\n                stream=stream_id,",
+        "peekOfCode": "def discover():\n    raw_schemas = load_schemas()\n    streams = []\n    for stream_id, schema in raw_schemas.items():\n        stream_metadata = []\n        key_properties = STREAMS[stream_id]['key_properties']\n        streams.append(\n            CatalogEntry(\n                tap_stream_id=stream_id,\n                stream=stream_id,",
+        "detail": "tap_pokeapi.discover",
+        "documentation": {}
+    },
+    {
+        "label": "STREAMS",
+        "kind": 5,
+        "importPath": "tap_pokeapi.discover",
+        "description": "tap_pokeapi.discover",
+        "peekOfCode": "STREAMS = {\n    'pokemons': {\n        'key_properties': ['id']\n    }\n}\ndef discover():\n    raw_schemas = load_schemas()\n    streams = []\n    for stream_id, schema in raw_schemas.items():\n        stream_metadata = []",
         "detail": "tap_pokeapi.discover",
         "documentation": {}
     },
@@ -178,15 +187,6 @@
         "importPath": "tap_pokeapi.schema",
         "description": "tap_pokeapi.schema",
         "peekOfCode": "def load_schemas():\n    \"\"\" Load schemas from schemas folder \"\"\"\n    schemas = {}\n    for filename in os.listdir(get_abs_path('schemas')):\n        path = get_abs_path('schemas') + '/' + filename\n        file_raw = filename.replace('.json', '')\n        with open(path) as file:\n            schemas[file_raw] = Schema.from_dict(json.load(file))\n    return schemas",
-        "detail": "tap_pokeapi.schema",
-        "documentation": {}
-    },
-    {
-        "label": "STREAMS",
-        "kind": 5,
-        "importPath": "tap_pokeapi.schema",
-        "description": "tap_pokeapi.schema",
-        "peekOfCode": "STREAMS = {\n    'pokemons': {\n    }\n}\ndef get_abs_path(path):\n    return os.path.join(os.path.dirname(os.path.realpath(__file__)), path)\ndef load_schemas():\n    \"\"\" Load schemas from schemas folder \"\"\"\n    schemas = {}\n    for filename in os.listdir(get_abs_path('schemas')):",
         "detail": "tap_pokeapi.schema",
         "documentation": {}
     },
